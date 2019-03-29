@@ -15,17 +15,48 @@ public class ExceptionHandling {
 
 		int a = 5;
 		int b = 0;
-		int div = a/b;
+		try{
+			int div = a/b;
+	    }catch(ArithmeticException e){
+	    	e.printStackTrace();
+	    	System.err.println("\n");
+	    }    
 		
 		int[] arr = new int[5];
-		arr[5] = 7;
+		try{
+			arr[5] = 7;
+	    }catch( ArrayIndexOutOfBoundsException e){
+	    	System.err.println(e.getMessage());
+	    	System.err.println("\n");
+	    	//e.printStackTrace();
+	    	//System.err.println( "Ooops something went wrong ..." );
+	    }
 		
 		String one = "one";
+		try{
 		int i = Integer.parseInt(one);
+	    }catch( NumberFormatException n){
+	    	// n.printStackTrace();
+	    	System.err.println(n+"\n");
+	    }
 		
 		double c = -7.0;
-		double d = Math.sqrt(c);
-		System.out.println(d);
+		try{
+		    complexNumber(c);
+	    }catch(ComplexNumberException e){
+	    	//c.complexNumber();
+	    	e.printStackTrace();
+	    }
+		// System.out.println(d);
 	}
+
+	public static double complexNumber(double c) throws ComplexNumberException{
+        if(c<0){
+		     throw new ComplexNumberException("this is a complex number");
+	    }else{
+	    	double d = Math.sqrt(c);
+	    	return d;
+	    }
+    }
 
 }
