@@ -18,6 +18,26 @@ public class Assert {
      assertEquals(null, expected, actual, delta);
   }
 
+  public static void assertEquals(String message, String expected, String actual, double delta) {
+    if (!expected.equals(actual)) {
+      failNotEquals(message, expected, actual);
+    }
+  }
+
+  public static void assertEquals(String expected, String actual, double delta) {
+     assertEquals(null, expected, actual, delta);
+  }
+
+  public static void assertEquals(String message, boolean expected, boolean actual, double delta) {
+    if (expected != actual) {
+      failNotEquals(message, Boolean.valueOf(expected), Boolean.valueOf(actual));
+    }
+  }
+
+  public static void assertEquals(boolean expected, boolean actual, double delta) {
+     assertEquals(null, expected, actual, delta);
+  }
+
   // helper methods to format strings etc.
 
   public static void fail(String message) {
